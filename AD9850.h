@@ -50,6 +50,34 @@ class AD9850
 	void pulse(int pin);
 	double calibFreq;
 };
+class DualAD9850{
+	public:
+  	AD9850();
+
+	void begin(int w_clka, int fq_uda, int dataa, int reseta,int w_clkb, int fq_udb, int datab, int resetb);
+	void setfreq(double f, uint8_t p);
+	void down();
+	void up();
+	void calibrate(double TrimFreq);
+	
+	private:
+	int W_CLKA;
+	int FQ_UDA;
+	int DATAA;
+	int RESETA;
+	int W_CLKB;
+	int FQ_UDB;
+	int DATAB;
+	int RESETB;
+	uint32_t deltaphase;
+	uint8_t phase;
+	void update();
+	void begin_priv();
+	void pulse(int pin);
+	double calibFreq;
+	
+	
+}
 
 extern AD9850 DDS;
 
