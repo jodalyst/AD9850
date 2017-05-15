@@ -121,4 +121,7 @@ DDS.down(); // Entering power down mode
 DDS.up(); // WAKE-UP !!! :)
 ```
 
+###Additional Code
+The `AD98502.cpp` and `AD98502.h` files are temporary holders for a dual AD9850 controller class.  Originally this was written as a simple wrapper for two standard AD9850 objects (one for each), but the delays in triggering the two devices, caused me to just rewrite to ensure faster, more synchronized setting of digital pins.  Will add examples, once I'm happy with the repackaging.
+
 
