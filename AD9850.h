@@ -3,6 +3,8 @@
  * Created 23/08/2014
  * Christophe Caiveau f4goj@free.fr 
  *
+ * this version modified by jodalyst 7/03/2017
+ *
  * Use this library freely
  *
  * Hardware connections : 
@@ -79,6 +81,34 @@ class DualAD9850{
 	
 }
 
-extern AD9850 DDS;
+class dualAD9850
+{
+    public:
+  dualAD9850();
+
+    void begin(int w_clk1, int fq_ud1, int data1, int reset1,int w_clk2, int fq_ud2, int data2, int reset2);
+    void setfreq(double f1, uint8_t p1,double f2, uint8_t p2);
+    void down();
+    void up();
+    void calibrate(double TrimFreq);
+    
+    private:
+    int W_CLK1;
+    int FQ_UD1;
+    int DATA1;
+    int RESET1;
+  int W_CLK2;
+  int FQ_UD2;
+  int DATA2;
+  int RESET2;
+    uint32_t deltaphase1;
+    uint8_t phase1;
+  uint32_t deltaphase2;
+  uint8_t phase2;
+    void update();
+    void begin_priv();
+    void pulse(int pin);
+    double calibFreq;
+};
 
 #endif
